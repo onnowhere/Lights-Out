@@ -1,0 +1,3 @@
+fill ~ ~ 0 ~ ~ 0 redstone_ore[lit=true] replace #a
+fill ~ ~ 0 ~ ~ 0 clay replace #[lit=false]
+execute if predicate l

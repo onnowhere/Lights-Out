@@ -1,0 +1,15 @@
+scoreboard objectives add  dummy
+summon cod
+execute as @e at @s unless entity @s[x=0,dx=7,z=0,dz=7] run fill ~ 0 ~ ~ 19 ~ air
+clone ~ 0 ~ ~ 18 ~ ~1 0 ~
+clone ~ 0 ~ ~ 18 ~ ~ 0 ~1
+execute at @e[sort=random,limit=9] run data merge block ~ 8 ~ {auto:1}
+execute at @e run data merge block ~ 8 ~ {auto:0}
+fill ~ ~ ~ ~ ~7 ~ air
+fill ~-1 9 ~ ~1 9 ~ dirt replace clay
+fill ~ 9 ~-1 ~ 9 ~1 dirt replace clay
+fill ~-1 9 ~ ~1 9 ~ clay replace sand
+fill ~ 9 ~-1 ~ 9 ~1 clay replace sand
+fill ~-1 9 ~-1 ~1 9 ~1 sand replace dirt
+execute store result score   run clone 0 9 0 7 9 7 0 9 0 filtered clay force
+execute unless score   matches 1..63 run say WIN

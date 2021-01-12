@@ -1,0 +1,8 @@
+fill ~ ~ 0 ~ ~ 0 ice replace clay
+fill ~ ~ 0 ~ ~ 0 clay replace dirt
+fill ~ ~ 0 ~ ~ 0 dirt replace ice
+execute at @e[sort=random,limit=1] run setblock ~ ~ 0 clay
+fill 0 0 9 7 7 9 command_block{auto:1,Command:"clone 0 9 0 0 9 9 ~ ~ 0"}
+execute if blocks 0 0 6 7 7 6 0 0 0 all
+me *
+execute if blocks 0 0 7 7 7 7 0 0 0 all

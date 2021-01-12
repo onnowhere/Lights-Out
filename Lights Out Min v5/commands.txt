@@ -1,0 +1,11 @@
+fill 0 20 0 7 20 7 command_block[facing=up]{auto:1,Command:"clone 0 0 0 0 23 0 ~ 0 ~"}
+execute at @e[sort=random,limit=1] run setblock ~ 8 ~ clay
+summon cod
+setblock ~ 3 ~ redstone_torch
+fill ~ 8 ~ ~ 8 ~ dirt replace clay
+fill ~ 8 ~ ~ 8 ~ clay replace sand
+fill ~ 8 ~ ~ 8 ~ sand replace dirt
+execute if blocks 0 8 0 7 8 7 0 0 0 all
+me GG
+execute if blocks 0 8 0 7 8 7 0 1 0 all
+me GG

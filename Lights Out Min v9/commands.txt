@@ -1,0 +1,6 @@
+fill ~ ~ 0 ~ ~ 0 ice replace #a
+fill ~ ~ 0 ~ ~ 0 clay replace #b
+fill ~ ~ 0 ~ ~ 0 dirt replace #c
+execute at @e run setblock ~ ~ 0 clay
+execute if predicate l
+me *

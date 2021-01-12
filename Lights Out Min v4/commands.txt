@@ -1,0 +1,12 @@
+fill 0 20 0 7 20 7 command_block[facing=up]{auto:1,Command:"clone 0 0 0 0 23 0 ~ 0 ~"}
+execute at @e[sort=random,limit=1] run summon arrow ~ 8 ~ {life:9000}
+summon cod
+fill ~-1 7 ~ ~1 7 ~ dirt replace clay
+fill ~ 7 ~-1 ~ 7 ~1 dirt replace clay
+fill ~-1 7 ~ ~1 7 ~ clay replace sand
+fill ~ 7 ~-1 ~ 7 ~1 clay replace sand
+fill ~-1 7 ~-1 ~1 7 ~1 sand replace dirt
+execute if blocks 0 7 0 7 7 7 0 0 0 all
+me GG
+execute if blocks 0 7 0 7 7 7 0 1 0 all
+me GG

@@ -1,0 +1,18 @@
+scoreboard objectives add l dummy
+summon cat ~ 0 ~ {Tags:[l]}
+execute as @e[tag=l,sort=nearest,limit=1] at @s unless entity @s[x=0,dx=7,z=0,dz=7] run fill ~ 0 ~ ~ 19 ~ air
+execute as @e[tag=l,sort=nearest,limit=1] at @s as @s[x=0,dx=7,z=0,dz=7] run clone ~ 0 ~ ~ 19 ~ ~1 0 ~
+clone ~ 0 ~ ~ 19 ~ ~ 0 ~1
+execute as @e[tag=l,sort=nearest,limit=1] store result score @s l run data get entity @s UUID[0]
+execute as @e[tag=l,sort=nearest,limit=1] at @s[scores={l=0..}] run data merge block ~ 8 ~ {auto:1}
+data merge block ~ 8 ~ {auto:0}
+fill ~ ~ ~ ~ ~8 ~ air
+fill ~-1 9 ~ ~1 9 ~ dirt replace white_wool
+fill ~ 9 ~-1 ~ 9 ~1 dirt replace white_wool
+fill ~-1 9 ~ ~1 9 ~ white_wool replace black_wool
+fill ~ 9 ~-1 ~ 9 ~1 white_wool replace black_wool
+fill ~-1 9 ~-1 ~1 9 ~1 black_wool replace dirt
+execute store result score @p l run clone 0 9 0 7 9 7 0 9 0 filtered black_wool force
+execute at @p[scores={l=64}] run say WIN
+execute store result score @p l run clone 0 9 0 7 9 7 0 9 0 filtered black_wool force
+execute at @p[scores={l=64}] run say WIN

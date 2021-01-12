@@ -1,0 +1,18 @@
+scoreboard objectives add lightsout dummy
+summon minecraft:area_effect_cloud ~ ~ ~
+execute positioned ~ ~1 ~ as @e[type=minecraft:area_effect_cloud,distance=..0.1] unless entity @s[x=0,dx=7,z=0,dz=7] run fill ~ ~-18 ~ ~ ~1 ~ air
+execute positioned ~ ~2 ~ as @e[type=minecraft:area_effect_cloud,distance=..0.1] if entity @s[x=0,dx=7,z=0,dz=7] run clone ~ ~-18 ~ ~ ~1 ~ ~1 ~-18 ~
+execute positioned ~ ~3 ~ as @e[type=minecraft:area_effect_cloud,distance=..0.1] if entity @s[x=0,dx=7,z=0,dz=7] run clone ~ ~-18 ~ ~ ~1 ~ ~ ~-18 ~1
+execute positioned ~ ~4 ~ as @e[type=minecraft:area_effect_cloud,distance=..0.1] if entity @s[x=0,dx=7,z=0,dz=7] store result score @s lightsout run data get entity @s UUID[0]
+execute positioned ~ ~5 ~ as @e[type=minecraft:area_effect_cloud,distance=..0.1] if entity @s[x=0,dx=7,z=0,dz=7] if score @s lightsout matches 0.. run data merge block ~ ~-10 ~ {auto:1b}
+execute positioned ~ ~6 ~ as @e[type=minecraft:area_effect_cloud,distance=..0.1] if entity @s[x=0,dx=7,z=0,dz=7] if score @s lightsout matches 0.. run data merge block ~ ~-10 ~ {auto:0b}
+fill ~ ~ ~ ~ ~8 ~ minecraft:air
+fill ~-1 ~1 ~ ~1 ~1 ~ minecraft:barrier replace minecraft:white_concrete
+fill ~ ~2 ~-1 ~ ~2 ~1 minecraft:barrier replace minecraft:white_concrete
+fill ~-1 ~3 ~ ~1 ~3 ~ minecraft:white_concrete replace minecraft:black_concrete
+fill ~ ~4 ~-1 ~ ~4 ~1 minecraft:white_concrete replace minecraft:black_concrete
+fill ~-1 ~5 ~-1 ~1 ~5 ~1 minecraft:black_concrete replace minecraft:barrier
+execute as @p store result score @s lightsout run clone 0 ~6 0 7 ~6 7 0 ~6 0 filtered minecraft:black_concrete force
+execute as @p if score @s lightsout matches 64 run title @a title {"text":"YOU WIN!!!","color":"gold"}
+execute as @p store result score @s lightsout run clone 0 ~8 0 7 ~8 7 0 ~8 0 filtered minecraft:white_concrete force
+execute as @p if score @s lightsout matches 64 run title @a title {"text":"YOU WIN!!!","color":"gold"}
